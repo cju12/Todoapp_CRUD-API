@@ -5,36 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo app</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/08c13121c6.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="topUI">
+        <a href="/"><h1 class="h1">Todo App</h1></a>
+        <span><form action ="/add" method="get">
+            <button class="addTodo" id="add">Add</button>
+        </form></span>
+    </div>
     <div class="container">
-        <div class="topUI">
-            <a href="/"><h1>Todo App</h1></a>
-            <form action ="/add" method="get">
-                <button class="addTodo" id="add">Add</button>
-            </form>
-        </div>
-    <% if (todoList.length > 0) { %>
-        <% todoList.forEach(function(Todo) { %>
-            <div class="todolist">
-                <ul class="todo-list">
-                    <li><strong><%= Todo.text %></strong></li>
-                    <li><%= Todo.priority %></li>
-                    <li><%= Todo.deadline %></li>
-                </ul>
-                <button class='delete' onclick="deleteFunc(event)">delete</button>
-                <form action = "/patch<%= Todo._id %>" method="get">
-                    <button class = "Edit">Edit</button>
-                </form>
-            </div>
-        <% }) %>
-    <% } else { %>
-        <p>No todos available.</p>
-    <% } %>
+        <% if (todoList.length > 0) { %>
+            <% todoList.forEach(function(Todo) { %>
+                <div class="todolist">
+                    <ul class="todo-list">
+                        <li id="goal"><strong><%= Todo.text %></strong></li>
+                        <li><strong>priority</strong> : <%= Todo.priority %></li>
+                        <li><strong>deadline</strong> : <%= Todo.deadline %></li>
+                    </ul>
+                    <button class='delete' onclick="deleteFunc(event)">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    <form action = "/patch<%= Todo._id %>" method="get">
+                        <button class = "Edit">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </form>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <p>No todos available.</p>
+        <% } %>
     </div>
 </body>
 <script>
-    function deleteFunc(event) {
+    deleteFunc = async (event) => {
         if (confirm('Are you sure you want to delete this todo?')) event.preventDefault();
         else return;
 

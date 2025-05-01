@@ -3,8 +3,14 @@
 import express from 'express'; // importing express module.
 import mongoose from 'mongoose'; // importing mongoose module.
 import dotenv from 'dotenv'; // importing dotenv module.
+import path from 'path'; // importing path module.
+import { fileURLToPath } from 'url'; // importing fileURLToPath module.
 import connectToDB from './database/db.js'; // importing connectToDB function from db.js file.
 import { Todo } from './modules/todo_model.js'; // importing Todo model from todo_model.js file.
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename); // getting the directory name of the current file.
+// This is used to resolve the path of the current file and get the directory name.
 
 dotenv.config(); // Load environment variables from .env file 
 
@@ -13,6 +19,7 @@ const app = express(); // Create an instance of express
 app.set('view engine', 'ejs'); // using EJS as the templating engine for rendering views.
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); // parse URL-encoded data (form data) (basically, it allows us to access form data from EJS in req.body)
+app.use(express.static(__dirname + '/public')); // serving static files from the 'public' directory.
 
 connectToDB(); // connecting to the mongoDB database
 
@@ -35,7 +42,7 @@ app.get('/', async (req, res) => {
 //TODO APIs
 app.get('/todo', async (req, res) => {
     try {
-        const result = await Todo.find({}); // Todo 모델을 사용하여 데이터베이스에서 모든 Todo 항목을 찾습니다.
+        const result = await Todo.find({}); // using Todo model to find all todo items in the DB.  
         res.send({
             success: true,
             message: "Todo Lists Retrieved Successfully",
@@ -52,19 +59,20 @@ app.get('/todo', async (req, res) => {
 });
 
 app.get('/patch:todoId', async (req, res) => {
-    const todoID = req.params.todoId; // 요청 URL에서 todoId를 가져옵니다.
+    const todoID = req.params.todoId; // get the todoId from the request URL.
     try {
         const result = await Todo.findById(todoID);
-        res.render('patch', { todo : result }); // patch.ejs 파일을 렌더링합니다.
+        res.render('patch', { todo : result }); // rendering patch.ejs file and passing the todo data to it.
     } catch (error) {
-        res.status(500).send('Internal Server Error'); // 오류가 발생하면 500 상태 코드를 반환합니다.
+        res.status(500).send('Internal Server Error'); // if an error occurs, send a 500 status code.
     }
 });
 
 app.post('/create-todo', async (req, res) => {
-    const todoDetails = req.body; // 요청 본문에서 todoDetails를 가져옵니다.
+    const todoDetails = req.body; // get the todo details from the request body.
+    // const todoDetails = { text: "asdf", priority: "high", deadline: "dd/mm/yyyy" }; // example todo details
     try {
-        const result = await Todo.create(todoDetails); // Todo 모델을 사용하여 새로운 Todo 항목을 생성합니다.
+        const result = await Todo.create(todoDetails); // Using todo model to create a new todo item in the DB.
         res.send({
             success: true,
             message: "Todo Created Successfully",
