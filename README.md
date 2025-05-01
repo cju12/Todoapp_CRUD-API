@@ -14,12 +14,18 @@ Fixed the bug in "/patch" which was allowing the wrong date inputs like (123/02/
 
 Added isValidDate() function to check whether the deadline of the goals are valid (not like 31/02/2025 or 31/11/2025)
 
+01/05/2025 : 
+
+Designed the main page, and few changes are made in index ejs file for the design
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
 
 Below is the todos for further development
 ** TODO **
+
+delete todos are sometimes not working, bug fix is needed.
 
 Display the goals in an order from "high" priority to "low" (prolly, I can do that in mongodb?)
 
