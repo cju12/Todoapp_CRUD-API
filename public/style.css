@@ -76,7 +76,7 @@ body {
     font-size: 25px;
 }
 
-.delete {
+#delete {
     position: absolute;
     align-items: center;
     background-color: rgb(254, 254, 254);
@@ -94,7 +94,7 @@ body {
 }
 
 
-.delete:hover {
+#delete:hover {
     background-color: rgb(9, 8, 58);
     color: white;
     border-color: rgb(9, 8, 58);
@@ -122,4 +122,10 @@ body {
     background-color: rgb(9, 8, 58);
     color: white;
     border-color: rgb(9, 8, 58);
+}
+
+.notodo {
+    font-size: 30px;
+    text-align: center;
+    color: white;
 }
