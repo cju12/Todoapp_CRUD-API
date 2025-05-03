@@ -1,0 +1,100 @@
+body {
+    background-color: rgb(9, 8, 58);
+    margin: 0px;
+    font-family: "Lexend", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.container {
+    background-color: white;
+    border: 2px;
+    border-radius: 6px;
+    color: rgb(9, 8, 58);
+    margin: 0 auto;
+    padding: 12px;
+    width: 400px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    #addh1 {
+        text-align: center;
+    };
+
+    #Goal {
+        text-align: center;
+    };
+
+    #textbox {
+        width: 395px;
+        height: 250px;
+        border: 1px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px grey;
+        resize: none;
+    };
+
+    .buttons {
+        position: absolute;
+        top: 87%;
+        left: 25%;
+        margin: auto;
+        width: 300px;
+    }
+}
+
+
+.priorityContainer {
+    position: absolute;
+    top: 68%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.deadlineContainer {
+    position: absolute;
+    top: 79%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    #deadlineP {
+        text-align: center;
+    };
+
+    #deadline {
+        position: relative;
+        display: block;
+        margin: 0 auto;
+        border: none;
+        box-shadow: 0px 0px 10px grey;
+        border-radius: 10px;
+
+    };
+}
+
+.allbutton {
+    background-color: rgb(254, 254, 254);
+    color: rgb(9, 8, 58);
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: 2px solid rgb(9, 8, 58);
+    border-radius: 100px;
+    transition: background-color 0.3s;
+    width: 100px;
+}
+
+.allbutton:hover {
+    background-color: rgb(9, 8, 58);
+    color: white;
+    border-color: rgb(9, 8, 58);
+}
+
+

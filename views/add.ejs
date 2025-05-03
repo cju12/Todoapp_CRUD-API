@@ -5,26 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add</title>
     <link rel="stylesheet" href="addstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/08c13121c6.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Add New Todo</h1>
-    <label for="text">Goal</label><br />
-    <textarea name="text" id="text" cols="50" rows="15" required placeholder="What do you want to do?"></textarea><br />
-
-    <label for="priority">Priority</label>
-    <select id="priority" name="priority" required>
-        <option value="" disabled selected>Select priority</option>
-        <option value="high">High</option>
-        <option value="middle">Middle</option>
-        <option value="low">Low</option>
-    </select><br />
-        
-    <label for="deadline">Deadline (dd/mm/yyyy)</label>
-    <input type="text" id="deadline" name="deadline" required pattern="\d{2}/\d{2}/\d{4}" placeholder="e.g. 20/04/2025"><br />
-
-    <div class="buttons">
-        <button id='submitbutton' type="submit" class="allbutton">Submit</button>
-        <a href="/"><button id="backbutton" class="allbutton" type="button">Back</button></a>
+    <div class="container">
+        <h1 id="addh1">Add New Todo</h1>
+        <p id="Goal">Goal</p>
+        <textarea name="text" id="textbox" cols="50" rows="15" required placeholder="What do you want to do?"></textarea><br />
+    
+        <div class="priorityContainer">
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority" required>
+                <option value="" disabled selected>Select priority</option>
+                <option value="high">High</option>
+                <option value="middle">Middle</option>
+                <option value="low">Low</option>
+            </select><br />
+        </div>
+        <div class="deadlineContainer">
+            <p id="deadlineP">Deadline (dd/mm/yyyy)</p>
+            <input type="text" id="deadline" name="deadline" required placeholder="e.g. 20/04/2025"><br />
+        </div>
+        <div class="buttons">
+            <button id='submitbutton' type="submit" class="allbutton">Submit</button>
+            <a href="/"><button id="backbutton" class="allbutton" type="button">Back</button></a>
+        </div>
     </div>
 </body>
 <script>
@@ -44,8 +52,9 @@
     }
 
     const regex = /^([0]?[1-9]|[12][0-9]|[3][0-1])[/]([0]?[1-9]|[1][0-2])[/]([0-9]{4})$/;
+
     document.getElementById('submitbutton').addEventListener('click', function(event) {
-        const textInput = document.getElementById("text").value.toString();
+        const textInput = document.getElementById("textbox").value.toString();
         const priorityInput = document.getElementById("priority").value.toString();
         const deadlineInput = document.getElementById("deadline").value.toString();
 
@@ -63,17 +72,17 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                text: document.getElementById('text').value,
-                priority: document.getElementById('priority').value,
-                deadline: document.getElementById('deadline').value
+                text: document.getElementById("textbox").value,
+                priority: document.getElementById("priority").value,
+                deadline: document.getElementById("deadline").value
             })
         })
         .then(res => {
             if (res.ok) {
-                window.alert('Todo added successfully!'); // Show a success message
-                window.location.href = '/'; // Redirect to the home page
+                window.alert("Todo Added Successfully!"); // Show a success message
+                window.location.href = "/"; // Redirect to the home page
             } else {
-                console.error('Failed to add todo. Please try again.', res.statusText); // Show an error message
+                console.error("Failed To Add Your Todo :(", res.statusText); // Show an error message
             }
         })
     });

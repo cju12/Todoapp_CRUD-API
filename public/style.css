@@ -15,20 +15,21 @@ body {
     margin: 0%;
 }
 
-.h1 {
+#h1 {
     color: rgb(9, 8, 58);
     text-align: left;
     margin: 0px;
     text-decoration: none;
     padding: 10px;
 }
-.h1:hover {
+#h1:hover {
     color: rgb(9, 8, 58);
-    text-shadow: 3px 3px 5px rgb(72, 71, 71);
     text-align: left;
     margin: 0px;
     text-decoration: none;
-    padding: 10px;
+    text-shadow: 0px 0px 5px rgb(136, 135, 135);
+    
+    
 }
 
 #add {
