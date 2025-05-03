@@ -18,14 +18,16 @@ Added isValidDate() function to check whether the deadline of the goals are vali
 
 Designed the main page, and few changes are made in index ejs file for the design
 
+02/05/2025 : 
+
+Fixed (From **TODO** : delete todos are sometimes not working, bug fix is needed.). Designing the mainpage is completed. 
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
 
 Below is the todos for further development
 ** TODO **
-
-delete todos are sometimes not working, bug fix is needed.
 
 Display the goals in an order from "high" priority to "low" (prolly, I can do that in mongodb?)
 
