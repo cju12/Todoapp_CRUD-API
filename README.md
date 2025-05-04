@@ -26,6 +26,10 @@ Fixed (From **TODO** : delete todos are sometimes not working, bug fix is needed
 
 Designed the "/add" address, with a minor id values changes in add.ejs file 
 
+04/05/2025 : 
+
+Designed the whole webapp. Comments on server.js were changed. Added the top UI in "/add" address
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
@@ -33,11 +37,8 @@ Designed the "/add" address, with a minor id values changes in add.ejs file
 Below is the todos for further development
 ** TODO **
 
-topUI should be added in add.ejs file
-
 Display the goals in an order from "high" priority to "low" (prolly, I can do that in mongodb?)
 
 Show the time remaining till the deadline (If I can)
 
 
-DESIGN THE WHOLE THING :(
