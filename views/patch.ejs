@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo app</title>
     <link rel="stylesheet" href="patchstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/08c13121c6.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="topUI">
+        <a href="/"><h1 id="h1">Todo App</h1></a>
+    </div>
     <div class="container">
-        <label for="text">text</label><br />
+        <p id="updategoal">Rewrite Your Goal <i class="fa-solid fa-pen-to-square"></i></p>
         <textarea name="change" cols="50" rows="15" id="change" required placeholder="What do you want to change?"><%= todo.text %></textarea><br />
 
         <!--
@@ -16,24 +23,30 @@
 
         the previously selected priority is selected by default
         -->
-        <label for="priority">Priority</label>
-        <select id="priority" name="priority" required>
-            <option value="" disabled selected>Select priority</option>
-            <option value="high" <%= (todo.priority === 'high' ? 'selected' : '') %> >High</option>
-            <option value="middle" <%= (todo.priority === 'middle' ? 'selected' : '') %> >Middle</option>
-            <option value="low" <%= (todo.priority === 'low' ? 'selected' : '') %> >Low</option>
-        </select><br />
+        <div class="patchPriorityContainer">
+            <label for="priority">Priority</label>
+            <select id="priority" name="priority" required>
+                <option value="" disabled selected>Select priority</option>
+                <option value="high" <%= (todo.priority === 'high' ? 'selected' : '') %> >High</option>
+                <option value="middle" <%= (todo.priority === 'middle' ? 'selected' : '') %> >Middle</option>
+                <option value="low" <%= (todo.priority === 'low' ? 'selected' : '') %> >Low</option>
+            </select><br />
+        </div>
         
         <!--
 
         changing the deadline
 
         -->
-        <label for="deadline">Deadline (dd/mm/yyyy)</label>
-        <input type="text" id="deadline" name="deadline" required pattern="\d{2}/\d{2}/\d{4}" placeholder="e.g. 20/04/2025"><br />
+        <div class="patchDeadlineContainer">
+            <p id="patchDeadlineP">Deadline (dd/mm/yyyy)</p>
+            <input type="text" id="deadline" name="deadline" required pattern="\d{2}/\d{2}/\d{4}" placeholder="e.g. 20/04/2025"><br />
+        </div>
 
-        <button type="submit" id="editSubmitButton">Submit</button>
-        <a href="/"><button type="button">Back</button></a>
+        <div class="buttons">
+            <button type="submit" class="patchbuttons" id="editSubmitButton">Submit</button>
+            <a href="/"><button type="button" class="patchbuttons">Back</button></a>
+        </div>
     </div>
 </body>
 <script>

@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url'; // importing fileURLToPath module.
 import connectToDB from './database/db.js'; // importing connectToDB function from db.js file.
 import { Todo } from './modules/todo_model.js'; // importing Todo model from todo_model.js file.
 
-const __filename = fileURLToPath(import.meta.url);
+const __filename = fileURLToPath(import.meta.url); //
 const __dirname = path.dirname(__filename); // getting the directory name of the current file.
 // This is used to resolve the path of the current file and get the directory name.
 
@@ -22,6 +22,10 @@ app.use(express.urlencoded({ extended: false })); // parse URL-encoded data (for
 app.use(express.static(__dirname + '/public')); // serving static files from the 'public' directory.
 
 connectToDB(); // connecting to the mongoDB database
+
+/**
+ * When user requests the root URL ("/add"), render an add.ejs file to user
+ */
 
 app.get('/add', async (req, res) => {
     try {
@@ -89,7 +93,7 @@ app.post('/create-todo', async (req, res) => {
 });
 
 app.get('/:todoId', async (req, res) => {
-    const todoID = req.params.todoId; // 요청 URL에서 todoId를 가져옵니다.
+    const todoID = req.params.todoId; // get a todo id from the requested URL
     try{
         const result = await Todo.findById(todoID);
         res.send({
@@ -107,10 +111,14 @@ app.get('/:todoId', async (req, res) => {
 })
 
 app.patch('/:todoId', async (req, res) => {
-    const todoId = req.params.todoId; // 요청 URL에서 todoId를 가져옵니다.
-    const updatedTodo = req.body; // 요청 본문에서 업데이트할 Todo 항목을 가져옵니다.
+    const todoId = req.params.todoId; // get a todo id from the requested URL
+    const updatedTodo = req.body; // get a updated version of todo from a request body
     try {
-        const result = await Todo.findByIdAndUpdate(todoId, updatedTodo, { new: true }); // Todo 모델을 사용하여 Todo 항목을 업데이트합니다.
+        /**
+         *  Using the Todo model to find a todo item by its ID and update it with the new data from the request body.
+         *  The { new: true } option ensures the updated document is returned.
+         */
+        const result = await Todo.findByIdAndUpdate(todoId, updatedTodo, { new: true });
         res.send({
             success: true,
             message: "Todo Updated Successfully",
@@ -127,7 +135,7 @@ app.patch('/:todoId', async (req, res) => {
 
 app.delete('/:todoId', async (req, res) => {
     try {
-        await Todo.findByIdAndDelete(req.params.todoId); // Todo 모델을 사용하여 Todo 항목을 삭제합니다.
+        await Todo.findByIdAndDelete(req.params.todoId); // Delete the requested todo with a specific todoId from a URL
         res.send({
             success: true,
             message: "Todo is Deleted Successfully",
@@ -142,16 +150,18 @@ app.delete('/:todoId', async (req, res) => {
     }
 })
 
-const port = process.env.port || 3000;
+/**
+ * Use the value from the environment variable 'port' if available, else, default to 3000.
+ */
+const port = process.env.port || 3000; 
+
+
+/**
+ * listening to a server with a following port, "listening on (port number)" will be showed in terminal
+ * so I can know that the server's successfully opened.
+ */
 
 app.listen(port, function(){
     console.log(`listening on ${port}`);
-});//3000의 포트로 서버를 실행합니다. 만약 3000포트로 사용자가 접속하면 console.log(...)를 실행합니다
-
-//요청을 처리하는 기계 제작
-//누군가가 /todo로 요청을 하면, 서버는 '투두 앱'이라는 응답을 보냅니다.
-//app.get('경로', function(요청, 응답){})
-// '/'는 루트 경로를 의미합니다. 즉, 사용자가 http://localhost:3000/로 접속했을 때 이 경로가 실행됩니다.
-
-
+});
 

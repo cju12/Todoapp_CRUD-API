@@ -22,7 +22,6 @@ body {
     text-decoration: none;
     padding: 10px;
 }
-
 #h1:hover {
     color: rgb(9, 8, 58);
     text-align: left;
@@ -41,25 +40,21 @@ body {
     width: 400px;
     height: 500px;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
-    #addh1 {
+
+    #updategoal {
         text-align: center;
+        font-size: 20px;
     };
 
-    #Goal {
-        text-align: center;
-    };
-
-    #textbox {
-        width: 395px;
-        height: 220px;
-        border: 1px;
+    #change {
+        resize: none;
+        border: none;
         border-radius: 5px;
         box-shadow: 0px 0px 10px grey;
-        resize: none;
+        width: 395px;
         font-family: "Lexend", sans-serif;
         font-weight: 400;
         font-style: normal;
@@ -71,11 +66,12 @@ body {
         left: 25%;
         margin: auto;
         width: 300px;
-    }
+    };
+
 }
 
 
-.priorityContainer {
+.patchPriorityContainer {
     position: absolute;
     top: 68%;
     left: 50%;
@@ -91,31 +87,30 @@ body {
     };
 }
 
-.deadlineContainer {
+.patchDeadlineContainer {
     position: absolute;
     top: 79%;
     left: 50%;
     transform: translate(-50%, -50%);
-
-    #deadlineP {
-        text-align: center;
-    };
-
+    
     #deadline {
         position: relative;
         display: block;
         margin: 0 auto;
         border: none;
+        border-radius: 5px;
         box-shadow: 0px 0px 10px grey;
-        border-radius: 10px;
         font-family: "Lexend", sans-serif;
         font-weight: 400;
         font-style: normal;
+    };
 
+    #patchDeadlineP {
+        text-align: center;
     };
 }
 
-.allbutton {
+.patchbuttons {
     background-color: rgb(254, 254, 254);
     color: rgb(9, 8, 58);
     border: none;
@@ -131,9 +126,8 @@ body {
     width: 100px;
 }
 
-.allbutton:hover {
+.patchbuttons:hover {
     background-color: rgb(9, 8, 58);
     color: white;
     border-color: rgb(9, 8, 58);
 }
-
