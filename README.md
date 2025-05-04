@@ -22,12 +22,18 @@ Designed the main page, and few changes are made in index ejs file for the desig
 
 Fixed (From **TODO** : delete todos are sometimes not working, bug fix is needed.). Designing the mainpage is completed. 
 
+03/05/2025 : 
+
+Designed the "/add" address, with a minor id values changes in add.ejs file 
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
 
 Below is the todos for further development
 ** TODO **
+
+topUI should be added in add.ejs file
 
 Display the goals in an order from "high" priority to "low" (prolly, I can do that in mongodb?)
 
