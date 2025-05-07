@@ -30,6 +30,10 @@ Designed the "/add" address, with a minor id values changes in add.ejs file
 
 Designed the whole webapp. Comments on server.js were changed. Added the top UI in "/add" address
 
+07/05/2025 :
+
+Added comments for the elaboration of the lines of codes
+
 ==============================================================================================
 ==============================================================================================
 ==============================================================================================
