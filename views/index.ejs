@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="topUI">
-        <a href="/"><h1 id="h1">Todo App</h1></a>
+        <a href="/" draggable="false"><h1 id="h1">Todo App</h1></a>
         <span><form action ="/add" method="get">
             <button class="addTodo" id="add">Add</button>
         </form></span>
@@ -43,12 +43,23 @@
     </div>
 </body>
 <script>
-    function deleteFunc(event) {
-        if (confirm('Are you sure you want to delete this todo?')) event.preventDefault();
-        else return;
 
-        // Get the todo ID from the form action URL
-        const todoId = event.target.closest('button').className;
+    /**
+     * Delete function for deleting the displayed goals/todos.
+     * 
+     * functioning when the delete button is clicked
+    */
+    function deleteFunc(event) {
+
+        // Using confirm(), asking 1 more time if you want to delete the goal
+
+        if (confirm('Are you sure you want to delete this todo?')) event.preventDefault(); // Continue if clicked "ok"
+        else return; // Return if clicked "cancel"
+
+        // Get the todo ID from the class of delete button
+        const todoId = event.target.closest('button').className; 
+
+        // Using fetch api to function a method of delete
         fetch(`/${todoId}`, {
             method: 'DELETE',
         })
@@ -56,7 +67,7 @@
             if (res.ok) {
                 window.location.reload(); // Reload the page to see the updated list
             } else {
-                console.error('Error deleting todo:', res.statusText);
+                console.error('Error deleting todo:', res.statusText); // Show an error file if failed.
             }
         })
     };
