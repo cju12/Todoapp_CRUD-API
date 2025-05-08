@@ -8,7 +8,7 @@ import { fileURLToPath } from "url"; // importing fileURLToPath module.
 import connectToDB from "./database/db.js"; // importing connectToDB function from db.js file.
 import { Todo } from "./models/todo_model.js"; // importing Todo model from todo_model.js file.
 
-const __filename = fileURLToPath(import.meta.url); 
+const __filename = fileURLToPath(import.meta.url); // Convert the current module's URL to a file path and assign it to __filename
 const __dirname = path.dirname(__filename); // getting the directory name of the current file.
 // This is used to resolve the path of the current file and get the directory name.
 
@@ -35,6 +35,10 @@ app.get("/add", async (req, res) => {
     }
 });
 
+/**
+ * When user requests the main page URL, render an index.ejs file to user
+ */
+
 app.get("/", async (req, res) => {
     try {
         const result = await Todo.find({}); // using Todo model to find all todo items in the DB.  
@@ -43,24 +47,47 @@ app.get("/", async (req, res) => {
         res.send("Internal Server Error"); // if an error occurs, send a 500 status code.
     }
 });
-//TODO APIs
+
+/**
+ * Read API (C"R"UD API)
+ * 
+ * Check if all the goals and data can be displayed through webpage successfully.
+ * 
+ * Read all datas in DB
+ */
+
 app.get("/todo", async (req, res) => {
     try {
         const result = await Todo.find({}); // using Todo model to find all todo items in the DB.  
-        res.send({
-            success: true,
-            message: "Todo Lists Retrieved Successfully",
-            data: result,
-        });
+        res.render("error"); //render error.ejs file for a wrong URL typing unlike "/add", "/patch:id"
+        /**
+         * 
+         * For checking all the goals saved in the DB
+         * 
+         * res.send({
+         *  success: true,
+         *  message: "Todo Lists Retrieved Successfully",
+         *  data: result,
+         * });
+         */
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Failed To Retrieved Todo Lists Successfully",
-            data: null,
-        });
-
+        res.render("error"); //render error.ejs file for a wrong URL typing unlike "/add", "/patch:id"
+        /**
+         * 
+         * Sending fail message
+         * 
+         * res.send({
+         *  success: false,
+         *  message: "Failed to Retrieve Todo Lists",
+         *  data: null,
+         * });
+         */
     }
 });
+
+/**
+ * When user click "Edit" button, the request to the URL "/patch:todoId" is made
+ */
 
 app.get("/patch:todoId", async (req, res) => {
     const todoID = req.params.todoId; // get the todoId from the request URL.
@@ -71,6 +98,14 @@ app.get("/patch:todoId", async (req, res) => {
         res.status(500).send("Internal Server Error"); // if an error occurs, send a 500 status code.
     }
 });
+
+/**
+ * Create API ("C"RUD API)
+ * 
+ * creating the new data with the user input, and post to the DB
+ * 
+ * requests are the details of the data
+ */
 
 app.post("/create-todo", async (req, res) => {
     const todoDetails = req.body; // get the todo details from the request body.
@@ -92,23 +127,27 @@ app.post("/create-todo", async (req, res) => {
     }
 });
 
+/**
+ * Checking if requested data with a specific id exists
+ */
+
 app.get("/:todoId", async (req, res) => {
     const todoID = req.params.todoId; // get a todo id from the requested URL
     try{
         const result = await Todo.findById(todoID);
-        res.send({
-            success: true,
-            message: "Todo is Retrieved Successfully",
-            data: result,
-        })
+        res.render("error"); //render error.ejs file for a wrong URL typing unlike "/add", "/patch:todoid"
+        console.log("Retrieved successfully", result);
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Failed To Retrieved Todo",
-            data: null,
-        })
+        res.render("error"); //render error.ejs file for a wrong URL typing unlike "/add", "/patch:todoid"
     }
 })
+
+
+/**
+ * Update the requested data with the new user input
+ * 
+ * (CR"U"D API)
+ */
 
 app.patch("/:todoId", async (req, res) => {
     const todoId = req.params.todoId; // get a todo id from the requested URL
@@ -125,13 +164,16 @@ app.patch("/:todoId", async (req, res) => {
             data: result,
         });
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Failed To Update Todo",
-            data: null,
-        });
+        console.log("Failed to update todo");
+        res.render("error");
     }
 });
+
+/**
+ * Delete API (CRU"D" API)
+ * 
+ * Delete the requested data
+ */
 
 app.delete("/:todoId", async (req, res) => {
     try {
@@ -142,11 +184,8 @@ app.delete("/:todoId", async (req, res) => {
             data: null,
         });
     } catch (error) {
-        res.send({
-            success: false,
-            message: "Failed To Delete Todo",
-            data: null,
-        });
+        res.render("error");
+        console.log("Failed To Delete todo");
     }
 })
 
