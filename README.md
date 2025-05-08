@@ -45,8 +45,6 @@ More comments for the elaboration are made in server.js
 Below is the todos for further development
 ** TODO **
 
-Display the goals in an order from "high" priority to "low" (prolly, I can do that in mongodb?)
-
 Show the time remaining till the deadline (If I can)
 
 
