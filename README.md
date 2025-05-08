@@ -4,6 +4,8 @@ Using Express.js, Mongoose mongoDB, EJS, CSS and Javascript, I made a simple web
 
 Building a CRUD-api in express.js and node.js, allowing users to Create, Read, Update, Delete their goals.
 
+--------------------------------------------
+
 27/04/2025 : 
 
 The "/add" address will now function as the same as the "/patch" "/delete" addresses by using fetch api (it's no longer a html based. Like form action="".... method="").
@@ -34,8 +36,10 @@ Designed the whole webapp. Comments on server.js were changed. Added the top UI 
 
 Added comments for the elaboration of the lines of codes
 
-==============================================================================================
-==============================================================================================
+08/05/2025 :
+
+More comments for the elaboration are made in server.js
+
 ==============================================================================================
 
 Below is the todos for further development
