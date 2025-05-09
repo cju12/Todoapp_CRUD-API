@@ -6,9 +6,5 @@ Building a CRUD-api in express.js and node.js, allowing users to Create, Read, U
 
 --------------------------------------------
 
-Below is the todos for further development
-** TODO **
-
-Show the time remaining till the deadline (If I can)
-
+Developing Period :
 
