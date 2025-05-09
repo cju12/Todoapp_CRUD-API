@@ -6,42 +6,6 @@ Building a CRUD-api in express.js and node.js, allowing users to Create, Read, U
 
 --------------------------------------------
 
-27/04/2025 : 
-
-The "/add" address will now function as the same as the "/patch" "/delete" addresses by using fetch api (it's no longer a html based. Like form action="".... method="").
-
-Fixed the bug in "/patch" which was allowing the wrong date inputs like (123/02/20254 .... etc).
-
-28/04/2025 :
-
-Added isValidDate() function to check whether the deadline of the goals are valid (not like 31/02/2025 or 31/11/2025)
-
-01/05/2025 : 
-
-Designed the main page, and few changes are made in index ejs file for the design
-
-02/05/2025 : 
-
-Fixed (From **TODO** : delete todos are sometimes not working, bug fix is needed.). Designing the mainpage is completed. 
-
-03/05/2025 : 
-
-Designed the "/add" address, with a minor id values changes in add.ejs file 
-
-04/05/2025 : 
-
-Designed the whole webapp. Comments on server.js were changed. Added the top UI in "/add" address
-
-07/05/2025 :
-
-Added comments for the elaboration of the lines of codes
-
-08/05/2025 :
-
-More comments for the elaboration are made in server.js
-
-==============================================================================================
-
 Below is the todos for further development
 ** TODO **
 
