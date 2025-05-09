@@ -1,4 +1,43 @@
-// This is a simple Express server that serves static files from the "public" directory
+/**
+ * 
+27/04/2025 : 
+
+The "/add" address will now function as the same as the "/patch" "/delete" addresses by using fetch api (it's no longer a html based. Like form action="".... method="").
+
+Fixed the bug in "/patch" which was allowing the wrong date inputs like (123/02/20254 .... etc).
+
+28/04/2025 :
+
+Added isValidDate() function to check whether the deadline of the goals are valid (not like 31/02/2025 or 31/11/2025)
+
+01/05/2025 : 
+
+Designed the main page, and few changes are made in index ejs file for the design
+
+02/05/2025 : 
+
+Fixed (From **TODO** : delete todos are sometimes not working, bug fix is needed.). Designing the mainpage is completed. 
+
+03/05/2025 : 
+
+Designed the "/add" address, with a minor id values changes in add.ejs file 
+
+04/05/2025 : 
+
+Designed the whole webapp. Comments on server.js were changed. Added the top UI in "/add" address
+
+07/05/2025 :
+
+Added comments for the elaboration of the lines of codes
+
+08/05/2025 :
+
+More comments for the elaboration are made in server.js
+
+09/05/2025 :
+
+Created add.js file for javascript functions needed in add.ejs file.  
+ */
 
 import express from "express"; // importing express module.
 import mongoose from "mongoose"; // importing mongoose module.
@@ -44,7 +83,7 @@ app.get("/", async (req, res) => {
         const result = await Todo.find({}); // using Todo model to find all todo items in the DB.  
         res.render("index", { todoList: result }); // rendering index.ejs file and passing the todoList data to it.
     } catch (error) {
-        res.send("Internal Server Error"); // if an error occurs, send a 500 status code.
+        res.status(500).send("Internal Server Error"); // if an error occurs, send a 500 status code.
     }
 });
 
@@ -118,12 +157,8 @@ app.post("/create-todo", async (req, res) => {
             data: result,
         });
     } catch (error) {
-        console.log(error);
-        res.send({
-            success: false,
-            message: "Failed To Create Todo",
-            data: null,
-        });
+        res.status(500).send("Internal Server Error");
+        console.log("Failed To Create Todo");
     }
 });
 
@@ -164,8 +199,8 @@ app.patch("/:todoId", async (req, res) => {
             data: result,
         });
     } catch (error) {
-        console.log("Failed to update todo");
-        res.render("error");
+        res.status(500).send("Internal Server Error"); // if an error occurs, send a 500 status code.
+        console.log("Failed to update todo"); // send an error message in console
     }
 });
 
@@ -184,8 +219,8 @@ app.delete("/:todoId", async (req, res) => {
             data: null,
         });
     } catch (error) {
-        res.render("error");
-        console.log("Failed To Delete todo");
+        res.status(500).send("Internal Server Error"); // if an error occurs, send a 500 status code.
+        console.log("Failed To Delete todo"); //send error message in console
     }
 })
 
@@ -201,6 +236,6 @@ const port = process.env.port || 3000;
  */
 
 app.listen(port, function(){
-    console.log(`listening on ${port}`);
+    console.log(`listening on ${port}`); // Send the message in console if the server is opened successfully with the certain port number
 });
 
