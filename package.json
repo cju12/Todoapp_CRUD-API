@@ -1,7 +1,7 @@
 {
   "name": "todoapp",
   "version": "1.0.0",
-  "description": "Javascript, Node.js 를 사용하여 간단한 Todo 웹서비스를 만들어보겠습니다.",
+  "description": "By using Javascript, Node.js, I would make a webapp which can create, read, update, delete certain goals/objectives.",
   "main": "server.js",
   "type": "module",
   "scripts": {
