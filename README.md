@@ -2,10 +2,10 @@
 
 Using Express.js, Mongoose mongoDB, EJS, CSS and Javascript, I made a simple webapp which allow users to set the goals, its priorities and deadlines, and display it on the webpage. 
 
-Building a CRUD-api in express.js and node.js, allowing users to Create, Read, Update, Delete their goals.
+Building a CRUD-API in Express.js and node.js, allowing users to Create, Read, Update, Delete their goals through a webpage.
 
-This project is focused on how database(mongoDB) functions/works with a server, how items are saved and displayed through server and ejs files,
-and finally, the mechanisms of CRUD-Api and how can it be implemented through node.js and express.js.
+This project is focused on how database(mongoDB) functions/works with a server from Express.js, how users can interact with servers through the APIs.
+Additionally, how datas from the database are displayed on the webpage through EJS environment with a CSS design.
 
 --------------------------------------------
 
